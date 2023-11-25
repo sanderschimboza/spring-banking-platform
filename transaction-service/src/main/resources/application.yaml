@@ -1,0 +1,32 @@
+server:
+  port: 2001
+spring:
+  application:
+    name: transaction-service
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: ${POSTGRES_PASSWORD}
+    username: ${POSTGRES_USER}
+    url: ${POSTGRES_URL}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+  cache:
+    type: redis
+    redis:
+      time-to-live: 60000
+  data:
+    redis:
+      host: cache
+      port: 6379
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+      defaultZone: http://service-discovery:2004/eureka

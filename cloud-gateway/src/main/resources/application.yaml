@@ -1,0 +1,26 @@
+server:
+  port: 2003
+
+spring:
+  application:
+    name: cloud-gateway
+resilience4j:
+  circuitbreaker:
+    configs:
+      shared:
+        registerHealthIndicator: true
+        eventConsumerBufferSize: 10
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
+        minimum-number-of-calls: 3
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+    instances:
+      gatewayCb:
+        base-config: shared
+eureka:
+  client:
+    service-url:
+      defaultZone: http://service-discovery:2004/eureka

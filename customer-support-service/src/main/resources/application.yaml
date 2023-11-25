@@ -1,0 +1,27 @@
+server:
+  port: 2002
+spring:
+  application:
+    name: customer-service
+  data:
+    mongodb:
+      username: ${MONGO_USERNAME}
+      password: ${MONGO_PASSWORD}
+      database: ${MONGO_DB}
+      port: ${MONGO_PORT}
+      host: mongodb
+      authentication-database: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: guest
+    password: guest
+eureka:
+  client:
+    service-url:
+      defaultZone: http://service-discovery:2004/eureka
