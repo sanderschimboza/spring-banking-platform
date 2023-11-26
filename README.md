@@ -1,5 +1,5 @@
 # spring-banking-platform
-How to run this project insstructions:
+How to run this project instructions:
 
 1. Clone this repository
 2. Install docker and docker-compose on your local system
